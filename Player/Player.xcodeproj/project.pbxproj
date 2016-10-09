@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A2D68571DAA140900A7D57C /* Beyond.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9A2D68561DAA140900A7D57C /* Beyond.mp3 */; };
 		9AEC4C091DA8BB6E00F99ABC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC4C081DA8BB6E00F99ABC /* AppDelegate.swift */; };
 		9AEC4C0E1DA8BB6E00F99ABC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AEC4C0C1DA8BB6E00F99ABC /* Main.storyboard */; };
 		9AEC4C101DA8BB6E00F99ABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AEC4C0F1DA8BB6E00F99ABC /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A2D68561DAA140900A7D57C /* Beyond.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Beyond.mp3; sourceTree = "<group>"; };
 		9AEC4C051DA8BB6E00F99ABC /* Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Player.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AEC4C081DA8BB6E00F99ABC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AEC4C0D1DA8BB6E00F99ABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				9AEC4C0F1DA8BB6E00F99ABC /* Assets.xcassets */,
 				9AEC4C111DA8BB6E00F99ABC /* LaunchScreen.storyboard */,
 				9AEC4C141DA8BB6E00F99ABC /* Info.plist */,
+				9A2D68561DAA140900A7D57C /* Beyond.mp3 */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				TargetAttributes = {
 					9AEC4C041DA8BB6E00F99ABC = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9Y88996DG4;
 						ProvisioningStyle = Automatic;
 					};
 					9AEC4C181DA8BB6E00F99ABC = {
@@ -235,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A2D68571DAA140900A7D57C /* Beyond.mp3 in Resources */,
 				9AEC4C131DA8BB6E00F99ABC /* LaunchScreen.storyboard in Resources */,
 				9AEC4C101DA8BB6E00F99ABC /* Assets.xcassets in Resources */,
 				9AEC4C0E1DA8BB6E00F99ABC /* Main.storyboard in Resources */,
@@ -416,6 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9Y88996DG4;
 				INFOPLIST_FILE = Player/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huan.Player;
@@ -428,6 +434,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9Y88996DG4;
 				INFOPLIST_FILE = Player/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huan.Player;
@@ -509,6 +516,7 @@
 				9AEC4C2F1DA8BB6E00F99ABC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9AEC4C301DA8BB6E00F99ABC /* Build configuration list for PBXNativeTarget "PlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +525,7 @@
 				9AEC4C321DA8BB6E00F99ABC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9AEC4C331DA8BB6E00F99ABC /* Build configuration list for PBXNativeTarget "PlayerUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +534,7 @@
 				9AEC4C351DA8BB6E00F99ABC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
