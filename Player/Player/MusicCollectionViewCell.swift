@@ -9,8 +9,11 @@
 import UIKit
 
 class MusicCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var mp3ImageView: UIImageView!
+    @IBOutlet weak var mp3Name: UILabel!
     
     override func awakeFromNib() {
+        
         
     }
 }
