@@ -101,6 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rwD-fT-WdS">
+                                <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rwD-fT-WdS" secondAttribute="height" multiplier="1:1" id="7YB-LU-tKM"/>
                                 </constraints>
@@ -174,6 +175,7 @@
                         <outlet property="musicArtist" destination="zcv-25-UbO" id="ycD-0n-zWH"/>
                         <outlet property="musicImageView" destination="rwD-fT-WdS" id="pVK-xY-VJS"/>
                         <outlet property="musicTitle" destination="z9i-Ma-Uee" id="C2Y-Bz-g6C"/>
+                        <outlet property="playButton" destination="brC-Qn-Lqj" id="MSo-kP-QcM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vJJ-hd-s5V" userLabel="First Responder" sceneMemberID="firstResponder"/>

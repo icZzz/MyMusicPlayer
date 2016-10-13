@@ -13,11 +13,41 @@ class HWDataCenter: NSObject {
     
     static let sharedInstance = HWDataCenter()
     
-    //歌曲路径数组
-    var musicList = [[String:Any]]()
+    var musicList = [String]()
+    
+    
+    private override init() {
+        super.init()
+        musicList = self.getPlayerList()
+    }
+    
+    //根据歌曲路径获取歌曲的信息
+    func getMusicInfo(_ path:String) -> [String:Any] {
+        
+        var mp3Datas = [String : Any]()
+        //获取mp3中的信息
+        let avUrlAsset = AVURLAsset.init(url: URL.init(fileURLWithPath: path))
+        for item in avUrlAsset.metadata {
+            
+            guard let key = item.commonKey, let value = item.value else{
+                continue
+            }
+            
+            switch key {
+            case "title" : mp3Datas["title"]    = value as? String
+            case "artist": mp3Datas["artist"]   = value as? String
+            case "artwork": mp3Datas["image"]   = UIImage(data: (value as! NSData) as Data)
+            default:
+                continue
+            }
+        }
+        return mp3Datas
+    }
     
     //获取文件共享路径下的文件
-    func getPlayerData() -> [[String:Any]]{
+    private func getPlayerList() -> [String]{
+        
+        var lists = [String]()
         
         let fm = FileManager.default
         var paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
@@ -28,39 +58,16 @@ class HWDataCenter: NSObject {
                 
                 let files = try fm.contentsOfDirectory(atPath: documentsDirectory)
                 for file in files {
-                    var mp3Datas = [String : Any]()
                     
                     print(file)
                     //将其中的mp3文件加入array
                     if file.hasSuffix(".mp3"){
-                        let fileFullDocPath = self.getDocumentsPathOfFile(file)
-                        
-                        mp3Datas["mp3Path"] = fileFullDocPath
-                        //获取mp3中的信息
-                        let avUrlAsset = AVURLAsset.init(url: URL.init(fileURLWithPath: fileFullDocPath))
-                        for item in avUrlAsset.metadata {
-                            
-                            guard let key = item.commonKey, let value = item.value else{
-                                continue
-                            }
-                            
-                            switch key {
-                            case "title" : mp3Datas["title"]    = value as? String
-                            case "artist": mp3Datas["artist"]   = value as? String
-                            case "artwork": mp3Datas["image"]   = UIImage(data: (value as! NSData) as Data)
-                            default:
-                                continue
-                            }
-                        }
+                        lists += [self.getDocumentsPathOfFile(file)]
                     }
-                    
-                    musicList += [mp3Datas]
                 }
-            }   catch {
-                
-            }
+            }   catch {}
         }
-     return musicList
+     return lists
     }
     
     //获取歌曲的根路径
@@ -76,7 +83,4 @@ class HWDataCenter: NSObject {
         }
         return filePath
     }
-    
-    //包括文件路径以及文件名
-    func getMusicLists() -> [[String:Any]] { return musicList }
 }

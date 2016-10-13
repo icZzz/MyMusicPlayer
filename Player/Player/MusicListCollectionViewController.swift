@@ -15,8 +15,10 @@ private let reuseIdentifier = "ioCell"
 
 class MusicListCollectionViewController: UICollectionViewController {
     
-    var mp3Datas :[[String:Any]] = []
+    var mp3Datas :[String] = []
     var mp3Data: [String : Any] = [:]
+    
+    var dataCener = HWDataCenter.sharedInstance
     
     
     override func viewDidLoad() {
@@ -29,7 +31,7 @@ class MusicListCollectionViewController: UICollectionViewController {
             print("error \(error)")
         }
         
-        mp3Datas = HWDataCenter.sharedInstance.getPlayerData()
+        mp3Datas = dataCener.musicList
     }
     
     
@@ -44,7 +46,7 @@ class MusicListCollectionViewController: UICollectionViewController {
         let indexPath = self.collectionView?.indexPath(for: cell)
         
         let playerViewController: MusicPlayerViewController = segue.destination as! MusicPlayerViewController
-        playerViewController.musicData = mp3Datas[(indexPath?.row)!]
+        playerViewController.indexRow = (indexPath?.row)!
     }
 
 
@@ -58,9 +60,11 @@ class MusicListCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MusicCollectionViewCell
         
-        let dic = mp3Datas[indexPath.row]
-        cell.mp3ImageView.image = dic["image"] as! UIImage?
-        cell.mp3Name.text       = dic["title"] as! String?
+        let path = mp3Datas[indexPath.row]
+        //后续做缓存处理
+        let dic = dataCener.getMusicInfo(path)
+        cell.mp3ImageView.image    = dic["image"] as! UIImage?
+        cell.mp3Name.text          = dic["title"] as! String?
         return cell
     }
 
