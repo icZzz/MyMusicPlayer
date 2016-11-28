@@ -23,13 +23,16 @@ enum MusicPlayerStatus: Int{
     case playerPrevious
 }
 
-class MusicPlayerViewController: UIViewController {
+class MusicPlayerViewController: UIViewController,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var musicImageView: UIImageView!
     @IBOutlet weak var musicTitle: UILabel!
     @IBOutlet weak var musicArtist: UILabel!
     @IBOutlet weak var playButton: UIButton!
 
+    deinit {
+        
+    }
     //音乐播放器
     var player: AVAudioPlayer!
     
@@ -37,9 +40,13 @@ class MusicPlayerViewController: UIViewController {
     var indexRow :Int = 0
     var musicLists = HWDataCenter.sharedInstance.musicList
     
+    //跳转动画
+    let presentAnimation = HWPlayerAnimation()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.transitioningDelegate = self
         self.setPlayerInfo(musicLists[indexRow])
     }
     
@@ -110,6 +117,10 @@ class MusicPlayerViewController: UIViewController {
         }
     }
     
+    func deallocate(){
+        
+    }
+    
     //设置player状态
     func setPlayerStatus(_ status:MusicPlayerStatus) {
         
@@ -124,7 +135,7 @@ class MusicPlayerViewController: UIViewController {
     }
     
     // MARK: - Button Click Event
-    
+     
     @IBAction func playOrPuse(_ sender: UIButton) {
         if sender.isSelected{
             self.setPlayerStatus(.playerPlay)
@@ -140,6 +151,14 @@ class MusicPlayerViewController: UIViewController {
         self.setPlayerStatus(.playerPrevious)
     }
     
+    
+    /// 改变歌曲标记位置
+    /// - Complexity: 0(1)
+    /// - Authors: allon
+    ///
+    /// - parameter add: 是否是增加
+    ///
+    /// - returns: 改变后的标记位置
     func changeIntValue(_ add:Bool) -> Int{
         
         if add{
@@ -165,6 +184,28 @@ extension MusicPlayerViewController: AVAudioPlayerDelegate{
     //当播放器歌曲结束的时候，调用的函数
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         self.setPlayerStatus(.playerNext)
+    }
+}
+
+// MARK: - TransitioningDelegate
+extension MusicPlayerViewController: UIViewControllerTransitioningDelegate{
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        return HWPlayerPresentationController.init(presentedViewController:presented, presenting:presenting)
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        presentAnimation.isPresenting = true
+        return presentAnimation
+    }
+    
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        presentAnimation.isPresenting = false
+        return presentAnimation
     }
 }
 

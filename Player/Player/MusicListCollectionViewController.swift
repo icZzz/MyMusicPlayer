@@ -18,6 +18,8 @@ class MusicListCollectionViewController: UICollectionViewController {
     var mp3Datas :[String] = []
     var mp3Data: [String : Any] = [:]
     
+    
+    
     var dataCener = HWDataCenter.sharedInstance
     
     
@@ -46,6 +48,8 @@ class MusicListCollectionViewController: UICollectionViewController {
         let indexPath = self.collectionView?.indexPath(for: cell)
         
         let playerViewController: MusicPlayerViewController = segue.destination as! MusicPlayerViewController
+        playerViewController.modalPresentationStyle = UIModalPresentationStyle.custom
+        playerViewController.view.superview?.bounds = CGRect(x:0, y:0, width:self.view.frame.size.width, height:self.view.frame.size.height)
         playerViewController.indexRow = (indexPath?.row)!
     }
 

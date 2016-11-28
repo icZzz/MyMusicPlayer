@@ -73,7 +73,7 @@
                                 <connections>
                                     <outlet property="mp3ImageView" destination="Uoa-Qk-mXg" id="IaY-XF-egU"/>
                                     <outlet property="mp3Name" destination="kuR-sc-LaY" id="UH7-mP-bVP"/>
-                                    <segue destination="wdf-18-8GY" kind="push" id="h4K-dJ-AG2"/>
+                                    <segue destination="wdf-18-8GY" kind="presentation" id="V3T-6S-lf4"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
