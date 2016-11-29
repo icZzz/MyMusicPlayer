@@ -23,7 +23,8 @@ class HWDataCenter: NSObject {
     
     //获取音乐数据
     func getMusicData(_ data:Data) {
-        print("music data")
+        
+        _ = "iczzz"
     }
     
     //根据歌曲路径获取歌曲的信息
