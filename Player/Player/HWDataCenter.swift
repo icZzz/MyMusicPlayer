@@ -21,6 +21,11 @@ class HWDataCenter: NSObject {
         musicList = self.getPlayerList()
     }
     
+    //获取音乐数据
+    func getMusicData(_ data:Data) {
+        print("music data")
+    }
+    
     //根据歌曲路径获取歌曲的信息
     func getMusicInfo(_ path:String) -> [String:Any] {
         
