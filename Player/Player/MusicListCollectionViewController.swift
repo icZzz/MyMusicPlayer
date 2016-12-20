@@ -40,7 +40,7 @@ class MusicListCollectionViewController: UICollectionViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // In a storyboard-based application, you will often want to do a little l,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         //根据点击的cell，获取对应的音乐数据
